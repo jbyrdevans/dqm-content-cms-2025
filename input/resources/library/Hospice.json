@@ -5,12 +5,7 @@
     "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-computablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-publishablelibrary", "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-executablelibrary", "http://hl7.org/fhir/uv/cql/StructureDefinition/cql-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-json-library", "http://hl7.org/fhir/uv/cql/StructureDefinition/elm-xml-library" ]
   },
   "url": "https://madie.cms.gov/Library/Hospice",
-  "identifier": [ {
-    "use": "official",
-    "system": "https://madie.cms.gov/login",
-    "value": "684c52bf0d70b65363c69ee2"
-  } ],
-  "version": "6.18.000",
+  "version": "7.1.000",
   "name": "Hospice",
   "title": "Hospice",
   "status": "active",

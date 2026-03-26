@@ -1,11 +1,20 @@
-library CMS2FHIRPCSDepScreenAndFollowUp version '1.0.000'
+/*
+NOTE: For use by March 2026 US Realm Connectathon participants for internal use only. Not for use or distribution in commercial products.
+*/
+library CMS2FHIRPCSDepScreenAndFollowUp version '1.1.000'
 
-using QICore version '6.0.0'
+using QICore version '6.0.0-derived'
+using USCore version '6.1.0-derived'
+using FHIR version '4.0.1'
 
-include FHIRHelpers version '4.4.000' called FHIRHelpers
-include QICoreCommon version '4.0.000' called QICoreCommon
-include CumulativeMedicationDuration version '6.0.000' called CMD
-include SupplementalDataElements version '5.1.000' called SDE
+include hl7.fhir.uv.cql.FHIRHelpers version '4.0.1' called FHIRHelpers
+include hl7.fhir.uv.cql.FHIRCommon version '2.0.0' called FHIRCommon
+include hl7.fhir.us.cql.CumulativeMedicationDuration version '2.0.0-ballot' called CMD
+include hl7.fhir.us.cql.USCoreCommon version '2.0.0-ballot' called USCoreCommon
+include hl7.fhir.us.cql.USCoreElements version '2.0.0-ballot' called USCoreElements
+
+include QICoreCommon version '5.1.000' called QICoreCommon
+include SupplementalDataElements version '6.1.000' called SDE
 
 codesystem "LOINC": 'http://loinc.org'
 codesystem "SNOMEDCT": 'http://snomed.info/sct'
@@ -63,49 +72,53 @@ define "Numerator":
     )
 
 define "Denominator Exceptions":
+  false
+/*
+TODO: Need to reassess how we are representing given no ObservationCancelled profile
   ( exists "Medical or Patient Reason for Not Screening Adolescent for Depression"
       and not "Has Adolescent Depression Screening"
   )
     or ( exists "Medical or Patient Reason for Not Screening Adult for Depression"
         and not "Has Adult Depression Screening"
     )
+*/
 
 define "Follow Up Intervention for Positive Adolescent Depression Screening":
-  ( ( [MedicationRequest: "Adolescent Depression Medications"] AdolescentMed
+  ( ( [QICore.MedicationRequest: "Adolescent Depression Medications"] AdolescentMed
         with "Qualifying Encounter During Measurement Period" QualifyingEncounter
           such that "Most Recent Adolescent Depression Screening".effective.toInterval ( ) starts 14 days or less on or before day of start of QualifyingEncounter.period
-            and AdolescentMed.medicationRequestPeriod ( ).toInterval ( ) overlaps after day of QualifyingEncounter.period
+            and AdolescentMed.medicationRequestPeriod ( ) overlaps after day of QualifyingEncounter.period
             and "Most Recent Adolescent Depression Screening".value ~ "Depression screening positive (finding)"
             and AdolescentMed.status in { 'active', 'completed' }
             and AdolescentMed.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
     )
-      union ( [ServiceRequest: "Referral for Adolescent Depression"] AdolescentReferral
+      union ( [QICore.ServiceRequest: "Referral for Adolescent Depression"] AdolescentReferral
           where AdolescentReferral.status in { 'active', 'completed' }
       )
-      union ( [Procedure: "Follow Up for Adolescent Depression"] AdolescentFollowUp
+      union ( [QICore.Procedure: "Follow Up for Adolescent Depression"] AdolescentFollowUp
           where AdolescentFollowUp.status = 'completed'
       )
   )
 
 define "Follow Up Intervention for Positive Adult Depression Screening":
-  ( ( [MedicationRequest: "Adult Depression Medications"] AdultMed
+  ( ( [QICore.MedicationRequest: "Adult Depression Medications"] AdultMed
         with "Qualifying Encounter During Measurement Period" QualifyingEncounter
           such that "Most Recent Adult Depression Screening".effective.toInterval ( ) starts 14 days or less on or before day of start of QualifyingEncounter.period
-            and AdultMed.medicationRequestPeriod ( ).toInterval ( ) overlaps after day of QualifyingEncounter.period
+            and AdultMed.medicationRequestPeriod ( ) overlaps after day of QualifyingEncounter.period
             and "Most Recent Adult Depression Screening".value ~ "Depression screening positive (finding)"
             and AdultMed.status in { 'active', 'completed' }
             and AdultMed.intent in { 'order', 'original-order', 'reflex-order', 'filler-order', 'instance-order' }
     )
-      union ( [ServiceRequest: "Referral for Adult Depression"] AdultReferral
+      union ( [QICore.ServiceRequest: "Referral for Adult Depression"] AdultReferral
           where AdultReferral.status in { 'active', 'completed' }
       )
-      union ( [Procedure: "Follow Up for Adult Depression"] AdultFollowUp
+      union ( [QICore.Procedure: "Follow Up for Adult Depression"] AdultFollowUp
           where AdultFollowUp.status = 'completed'
       )
   )
 
 define "Has Adolescent Depression Screening":
-  exists ( [ObservationScreeningAssessment: "Adolescent depression screening assessment"] AdolescentScreening
+  exists ( [QICore.ObservationScreeningAssessment: "Adolescent depression screening assessment"] AdolescentScreening
       with "Qualifying Encounter During Measurement Period" QualifyingEncounter
         such that AdolescentScreening.effective.toInterval ( ) 14 days or less on or before day of start of QualifyingEncounter.period
           and AdolescentScreening.value is not null
@@ -113,7 +126,7 @@ define "Has Adolescent Depression Screening":
   )
 
 define "Has Adult Depression Screening":
-  exists ( [ObservationScreeningAssessment: "Adult depression screening assessment"] AdultScreening
+  exists ( [QICore.ObservationScreeningAssessment: "Adult depression screening assessment"] AdultScreening
       with "Qualifying Encounter During Measurement Period" QualifyingEncounter
         such that AdultScreening.effective.toInterval ( ) 14 days or less on or before day of start of QualifyingEncounter.period
           and AdultScreening.value is not null
@@ -131,12 +144,14 @@ define "Has Most Recent Adult Screening Negative":
   ) is not null
 
 define "History of Bipolar Diagnosis Before Qualifying Encounter":
-  [ConditionProblemsHealthConcerns: "Bipolar Disorder"] BipolarDiagnosis
+  [QICore.ConditionProblemsHealthConcerns: "Bipolar Disorder"] BipolarDiagnosis
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that BipolarDiagnosis.prevalenceInterval ( ) starts before day of start of QualifyingEncounter.period
 
+/*
+TODO: Needs to be reassessed given the pattern change for ObservationCancelled, this should really be a ServiceRequest with a TaskRejected, yes?
 define "Medical or Patient Reason for Not Screening Adolescent for Depression":
-  [ObservationCancelled: code ~ "Adolescent depression screening assessment"] NoAdolescentScreen
+  [QICore.ObservationCancelled: code ~ "Adolescent depression screening assessment"] NoAdolescentScreen
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that NoAdolescentScreen.issued during day of QualifyingEncounter.period
     where ( NoAdolescentScreen.notDoneReason ~ "Depression screening declined (situation)"
@@ -144,15 +159,16 @@ define "Medical or Patient Reason for Not Screening Adolescent for Depression":
     )
 
 define "Medical or Patient Reason for Not Screening Adult for Depression":
-  [ObservationCancelled: code ~ "Adult depression screening assessment"] NoAdultScreen
+  [QICore.ObservationCancelled: code ~ "Adult depression screening assessment"] NoAdultScreen
     with "Qualifying Encounter During Measurement Period" QualifyingEncounter
       such that NoAdultScreen.issued during day of QualifyingEncounter.period
     where ( NoAdultScreen.notDoneReason ~ "Depression screening declined (situation)"
         or NoAdultScreen.notDoneReason in "Medical Reason"
     )
+*/
 
 define "Most Recent Adolescent Depression Screening":
-  Last([ObservationScreeningAssessment: "Adolescent depression screening assessment"] AdolescentDepressionScreening
+  Last([QICore.ObservationScreeningAssessment: "Adolescent depression screening assessment"] AdolescentDepressionScreening
       with "Qualifying Encounter During Measurement Period" QualifyingEncounter
         such that AdolescentDepressionScreening.effective.toInterval() 14 days or less on or before day of start of QualifyingEncounter.period
           and AdolescentDepressionScreening.value is not null
@@ -173,7 +189,7 @@ define "Most Recent Adolescent Depression Screening Positive and Follow Up Provi
       and ( Coalesce(start of FollowUpPositiveAdolescentScreen.performed.toInterval(), FollowUpPositiveAdolescentScreen.authoredOn) during day of "Measurement Period" )
 
 define "Most Recent Adult Depression Screening":
-  Last([ObservationScreeningAssessment: "Adult depression screening assessment"] AdultDepressionScreening
+  Last([QICore.ObservationScreeningAssessment: "Adult depression screening assessment"] AdultDepressionScreening
       with "Qualifying Encounter During Measurement Period" QualifyingEncounter
         such that AdultDepressionScreening.effective.toInterval() 14 days or less on or before day of start of QualifyingEncounter.period
           and AdultDepressionScreening.value is not null
@@ -206,9 +222,9 @@ define "Patient Age 18 Years or Older at Start of Measurement Period":
   AgeInYearsAt(date from start of "Measurement Period") >= 18
 
 define "Qualifying Encounter During Measurement Period":
-  ( [Encounter: "Encounter to Screen for Depression"]
-    union [Encounter: "Physical Therapy Evaluation"]
-    union [Encounter: "Telephone Visits"] ) QualifyingEncounter
+  ( [QICore.Encounter: "Encounter to Screen for Depression"]
+    union [QICore.Encounter: "Physical Therapy Evaluation"]
+    union [QICore.Encounter: "Telephone Visits"] ) QualifyingEncounter
     where QualifyingEncounter.period during day of "Measurement Period"
       and QualifyingEncounter.status = 'finished'
 

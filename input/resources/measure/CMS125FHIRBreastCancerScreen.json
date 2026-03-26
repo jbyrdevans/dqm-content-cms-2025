@@ -71,7 +71,7 @@
       "display": "CMS"
     }
   } ],
-  "version": "1.0.000",
+  "version": "1.1.000",
   "name": "CMS125FHIRBreastCancerScreen",
   "title": "Breast Cancer ScreeningFHIR",
   "status": "active",

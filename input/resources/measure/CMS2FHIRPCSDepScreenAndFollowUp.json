@@ -98,7 +98,7 @@
       "display": "CMS"
     }
   } ],
-  "version": "1.0.000",
+  "version": "1.1.000",
   "name": "CMS2FHIRPCSDepScreenAndFollowUp",
   "title": "Preventive Care and Screening: Screening for Depression and Follow-Up PlanFHIR\n",
   "status": "active",

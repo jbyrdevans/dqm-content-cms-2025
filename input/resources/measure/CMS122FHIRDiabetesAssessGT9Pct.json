@@ -71,7 +71,7 @@
       "display": "CMS"
     }
   } ],
-  "version": "1.0.000",
+  "version": "1.1.000",
   "name": "CMS122FHIRDiabetesAssessGT9Pct",
   "title": "Diabetes: Glycemic Status Assessment Greater Than 9%FHIR",
   "status": "active",
