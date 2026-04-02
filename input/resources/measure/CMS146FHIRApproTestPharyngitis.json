@@ -1,0 +1,314 @@
+{
+  "resourceType": "Measure",
+  "id": "CMS146FHIRApproTestPharyngitis",
+  "meta": {
+    "profile": [ "http://hl7.org/fhir/uv/crmi/StructureDefinition/crmi-shareablemeasure", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/computable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/publishable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/executable-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cql-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/elm-measure-cqfm", "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/proportion-measure-cqfm" ]
+  },
+  "extension": [ {
+    "id": "supplementalDataGuidance",
+    "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-supplementalDataGuidance",
+    "extension": [ {
+      "url": "guidance",
+      "valueString": "For every patient evaluated by this measure also identify payer, race, ethnicity and sex"
+    }, {
+      "url": "usage",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+          "code": "supplemental-data",
+          "display": "Supplemental Data"
+        } ],
+        "text": "Supplemental Data Guidance"
+      }
+    } ]
+  } ],
+  "url": "https://madie.cms.gov/Measure/CMS146FHIRApproTestPharyngitis",
+  "identifier": [ {
+    "use": "usual",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "short-name",
+        "display": "Short Name"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/shortName",
+    "value": "CMS146FHIR"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "version-independent",
+        "display": "Version Independent"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:9012731d-f909-4733-aca5-b14e66fe9acd"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "version-specific",
+        "display": "Version Specific"
+      } ]
+    },
+    "system": "urn:ietf:rfc:3986",
+    "value": "urn:uuid:f5065d63-f2b7-438c-b677-14862bdecd27"
+  }, {
+    "use": "official",
+    "type": {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/artifact-identifier-type",
+        "code": "publisher",
+        "display": "Publisher"
+      } ]
+    },
+    "system": "https://madie.cms.gov/measure/cmsId",
+    "value": "146FHIR",
+    "assigner": {
+      "display": "CMS"
+    }
+  } ],
+  "version": "1.1.000",
+  "name": "CMS146FHIRApproTestPharyngitis",
+  "title": "Appropriate Testing for PharyngitisFHIR",
+  "status": "active",
+  "experimental": false,
+  "date": "2026-01-16T18:18:13+00:00",
+  "publisher": "National Committee for Quality Assurance",
+  "contact": [ {
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.ncqa.org/"
+    } ]
+  } ],
+  "description": "The percentage of episodes for patients 3 years and older with a diagnosis of pharyngitis that resulted in an antibiotic order on or three days after the episode date and a group A streptococcus (strep) test in the seven-day period from three days prior to the episode date through three days after the episode date",
+  "usage": "This is an episode of care measure that examines all eligible episodes for the patient. The intent is to determine whether antibiotics are being ordered appropriately. Antibiotics should only be ordered if a strep test has been performed to confirm a bacterial infection. Antibiotics should not be ordered for viral infections. Antibiotics should be ordered on or three days after the episode date. This eCQM is an episode-based measure. An episode is defined as each eligible encounter for patients aged 3 years and older with a diagnosis of pharyngitis that resulted in an antibiotic order from January 1 to December 28 of the measurement period. This FHIR-based measure has been derived from the QDM-based measure: CMS146v14. Please refer to the HL7 QI-Core Implementation Guide (https://hl7.org/fhir/us/qicore/STU6/) for more information on QI-Core and mapping recommendations from QDM to QI-Core STU 6. (https://hl7.org/fhir/us/qicore/STU6/qdm-to-qicore.html).",
+  "copyright": "This Physician Performance Measure (Measure) and related data specifications are owned and were developed by the National Committee for Quality Assurance (NCQA). NCQA is not responsible for any use of the Measure. NCQA makes no representations, warranties or endorsements about the quality of any product, test or protocol identified as numerator compliant or otherwise identified as meeting the requirements of the measure or specification. NCQA makes no representations, warranties, or endorsement about the quality of any organization or physician that uses or reports performance measures and NCQA has no liability to anyone who relies on such measures or specifications. NCQA holds a copyright in the Measure. The Measure may be used for internal, noncommercial purposes (e.g., use by healthcare providers in connection with their practices) without obtaining approval from NCQA. All other uses, including a commercial use (including but not limited to vendors using or embedding the measures and specifications into any product or service to calculate measure results for customers for any purpose), must be approved by NCQA and are subject to a license at the discretion of NCQA. (C) 2012-2025 National Committee for Quality Assurance. All Rights Reserved. Limited proprietary coding is contained in the Measure specifications for user convenience. Users of proprietary code sets should obtain all necessary licenses from the owners of the code sets. NCQA disclaims all liability for use or accuracy of any third-party codes contained in the specifications. CPT(R) codes, descriptions and other data are copyright 2025. American Medical Association. All rights reserved. CPT is a trademark of the American Medical Association. Fee schedules, relative value units, conversion factors and/or related components are not assigned by the AMA, are not part of CPT, and the AMA is not recommending their use. The AMA does not directly or indirectly practice medicine or dispense medical services. The AMA assumes no liability for data contained or not contained herein. Applicable FARS/DFARS restrictions apply to government use. Some measure specifications contain coding from LOINC(R) (https://loinc.org). The LOINC table, LOINC codes, LOINC panels and form file, LOINC linguistic variants file, LOINC/RSNA Radiology Playbook, and LOINC/IEEE Medical Device Code Mapping Table are copyright 2004-2025 Regenstrief Institute, Inc. and the Logical Observation Identifiers Names and Codes (LOINC) Committee, and are available at no cost under the license at https://loinc.org/kb/license/. This material contains SNOMED Clinical Terms(R) (SNOMED CT[R]) copyright 2004-2024 International Health Terminology Standards Development Organisation. ICD-10 copyright 2025 World Health Organization. All Rights Reserved. Some measures use RxNorm, a standardized nomenclature and coding for clinical drugs and drug delivery devices, which is made publicly available courtesy of the U.S. National Library of Medicine (NLM), National Institutes of Health, Department of Health and Human Services. NLM is not responsible for the measures and does not endorse or recommend this or any other product. “HL7” is the registered trademark of Health Level Seven International.",
+  "effectivePeriod": {
+    "start": "2026-01-01",
+    "end": "2026-12-31"
+  },
+  "author": [ {
+    "name": "National Committee for Quality Assurance",
+    "telecom": [ {
+      "system": "url",
+      "value": "https://www.ncqa.org/"
+    } ]
+  } ],
+  "relatedArtifact": [ {
+    "type": "citation",
+    "citation": "Linder, J. A., Bates, D. W., Lee, G. M., et al. (2005). Antibiotic Treatment of Children with Sore Throat. JAMA, 294(18), 2315-2322."
+  }, {
+    "type": "citation",
+    "citation": "Pfoh, E., Wessels, M.R., Goldmann, D., et al. (2008). Burden and Economic Cost of Group A Streptococcal Pharyngitis. Pediatrics, 121(2), 229-234. doi: 10.1542/peds.2007-0484"
+  }, {
+    "type": "citation",
+    "citation": "Shulman, S. T., Bisno, A. L., Clegg, H. W., et al. (2012). Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update by the Infectious Diseases Society of America. Clinical Infectious Diseases, 55(10), E86-E102. doi:10.1093/cid/cis629"
+  } ],
+  "library": [ "https://madie.cms.gov/Library/CMS146FHIRApproTestPharyngitis" ],
+  "disclaimer": "The performance Measure is not a clinical guideline and does not establish a standard of medical care, and has not been tested for all potential applications. THE MEASURE AND SPECIFICATIONS ARE PROVIDED \"AS IS\" WITHOUT WARRANTY OF ANY KIND. Due to technical limitations, registered trademarks are indicated by (R) or [R] and unregistered trademarks are indicated by (TM) or [TM].",
+  "rationale": "Group A streptococcal (GAS) bacterial infections and other infections that cause pharyngitis (which are most often viral) often produce the same signs and symptoms (Shulman et al., 2012). The American Academy of Pediatrics, the Centers for Disease Control and Prevention, and the Infectious Diseases Society of America all recommend a diagnostic test for Strep A to improve diagnostic accuracy and avoid unnecessary antibiotic treatment (Linder et al., 2005). Estimated economic costs of pediatric streptococcal pharyngitis in the United States range from $224 million to $539 million per year, including indirect costs related to parental work losses. At a higher level, the economic cost of antibiotic resistance varies but has extended as high as $20 billion in excess direct healthcare costs, with additional costs to society for lost productivity as high as $35 billion a year (2008 dollars) (Pfoh et al., 2008).",
+  "clinicalRecommendationStatement": "Infectious Disease Society of America (Shulman et al., 2012) The Infectious Diseases Society of America \"recommends swabbing the throat and testing for GAS pharyngitis by rapid antigen detection test (RADT) and/or culture because the clinical features alone do not reliably discriminate between GAS and viral pharyngitis except when overt viral features like rhinorrhea, cough, oral ulcers, and/or hoarseness are present\"",
+  "group": [ {
+    "id": "Group_1",
+    "extension": [ {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-scoring",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-scoring",
+          "code": "proportion",
+          "display": "Proportion"
+        } ]
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-populationBasis",
+      "valueCode": "Encounter"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-type",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-type",
+          "code": "process",
+          "display": "Process"
+        } ]
+      }
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-rateAggregation",
+      "valueCode": "None"
+    }, {
+      "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-improvementNotation",
+      "valueCodeableConcept": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-improvement-notation",
+          "code": "increase",
+          "display": "Increased score indicates improvement"
+        } ]
+      }
+    } ],
+    "population": [ {
+      "id": "InitialPopulation_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "initial-population",
+          "display": "Initial Population"
+        } ]
+      },
+      "description": "Outpatient, telephone, virtual encounter (i.e., e-visit or virtual check-in), or emergency department (ED) visits with a diagnosis of pharyngitis or tonsillitis from January 1 to December 28 of the measurement period and an antibiotic order on or three days after the episode date among patients 3 years or older",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Initial Population"
+      }
+    }, {
+      "id": "Denominator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator",
+          "display": "Denominator"
+        } ]
+      },
+      "description": "Equals Initial Population",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Denominator"
+      }
+    }, {
+      "id": "DenominatorExclusion_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "denominator-exclusion",
+          "display": "Denominator Exclusion"
+        } ]
+      },
+      "description": "Exclude pharyngitis episodes when the patient had hospice care for any part of the measurement period. Exclude pharyngitis episodes when the patient had a comorbid condition during the 12 months prior to or on the episode date. Exclude pharyngitis episodes where the patient is taking antibiotics in the 30 days prior to the episode date. Exclude pharyngitis episodes where the patient had a competing diagnosis on or three days after the episode date.",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Denominator Exclusions"
+      }
+    }, {
+      "id": "Numerator_1",
+      "code": {
+        "coding": [ {
+          "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+          "code": "numerator",
+          "display": "Numerator"
+        } ]
+      },
+      "description": "A group A streptococcus test in the seven-day period from three days prior to the episode date through three days after the episode date",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Numerator"
+      }
+    } ],
+    "stratifier": [ {
+      "id": "Stratification_1_1",
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "initial-population",
+            "display": "Initial Population"
+          } ]
+        }
+      } ],
+      "description": "- 3-17 years",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Encounter With Pharyngitis or Tonsillitis With Antibiotic"
+      }
+    }, {
+      "id": "Stratification_1_2",
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "initial-population",
+            "display": "Initial Population"
+          } ]
+        }
+      } ],
+      "description": "- 18-64 years",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Encounter With Pharyngitis or Tonsillitis With Antibiotic"
+      }
+    }, {
+      "id": "Stratification_1_3",
+      "extension": [ {
+        "url": "http://hl7.org/fhir/us/cqfmeasures/StructureDefinition/cqfm-appliesTo",
+        "valueCodeableConcept": {
+          "coding": [ {
+            "system": "http://terminology.hl7.org/CodeSystem/measure-population",
+            "code": "initial-population",
+            "display": "Initial Population"
+          } ]
+        }
+      } ],
+      "description": "- 65 years and older",
+      "criteria": {
+        "language": "text/cql-identifier",
+        "expression": "Encounter With Pharyngitis or Tonsillitis With Antibiotic"
+      }
+    } ]
+  } ],
+  "supplementalData": [ {
+    "id": "sde-ethnicity",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Ethnicity",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Ethnicity"
+    }
+  }, {
+    "id": "sde-payer",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Payer",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Payer"
+    }
+  }, {
+    "id": "sde-race",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Race",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Race"
+    }
+  }, {
+    "id": "sde-sex",
+    "usage": [ {
+      "coding": [ {
+        "system": "http://terminology.hl7.org/CodeSystem/measure-data-usage",
+        "code": "supplemental-data"
+      } ]
+    } ],
+    "description": "SDE Sex",
+    "criteria": {
+      "language": "text/cql-identifier",
+      "expression": "SDE Sex"
+    }
+  } ]
+}

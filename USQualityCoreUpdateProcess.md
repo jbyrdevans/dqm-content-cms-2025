@@ -15,6 +15,7 @@ For the purposes of this discussion, we will be focusing on the following 5 meas
 | CMS125: Breast Cancer Screening | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS125FHIRBreastCancerScreen.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS125FHIRBreastCancerScreen.cql) |
 | CMS130: Colon Cancer Screening | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS130FHIRColorectalCancerScrn.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS130FHIRColorectalCancerScrn.cql)* |
 | CMS135: CMS135FHIRACEIorARBorARNIforHF | | |
+| CMS146: Appropriate Testing for Pharyngitis | | |
 | CMS165: Controlling High Blood Pressure | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CMS165FHIRControllingHighBP.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/CMS165FHIRControllingHighBP.cql)* |
 | CMS334: Cesarean Birth | | |
 | CMS986: Global Malnutrition Score | | |
@@ -32,6 +33,7 @@ These are all EC measures that make use of the following shared libraries:
 | AdvancedIllnessandFrailty | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/AdvancedIllnessandFrailty.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/AdvancedIllnessandFrailty.cql) |
 | AHAOverall | | |
 | AlaraCommonFunctions | | |
+| Antibiotic | | |
 | CumulativeMedicationDuration | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/CumulativeMedicationDuration.cql) | [USQualityCore](https://build.fhir.org/ig/HL7/us-cql-ig/en/Library-CumulativeMedicationDuration.html) |
 | Hospice | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/Hospice.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/Hospice.cql) |
 | PalliativeCare | [QICore](https://github.com/cqframework/dqm-content-qicore-2025/blob/master/input/cql/PalliativeCare.cql) | [USQualityCore](https://github.com/cqframework/dqm-content-cms-2025/blob/main/input/cql/PalliativeCare.cql) |
@@ -94,6 +96,7 @@ Once the models have been updated, we need to update the shared library referenc
 | AdvancedIllnessandFrailty | 1.27.000 | 2.1.000 |
 | AHAOverall | 4.1.000 | 5.1.000 |
 | AlaraCommonFunctions | 1.10.000 | 2.1.000 |
+| Antibiotic | 1.11.000 | 2.1.000 |
 | CQMCommon | 4.1.000 | 5.1.000 |
 | CumulativeMedicationDuration | 6.0.000 | hl7.fhir.us.cql.CumulativeMedicationDuration version 2.0.0-ballot |
 | FHIRHelpers | 4.4.000 | hl7.fhir.uv.cql.FHIRHelpers version 4.0.1 |
